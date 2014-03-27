@@ -164,7 +164,7 @@ public class BuildingScript : MonoBehaviour
     void OnMouseDown()
     {
         //Since buildings do not level up, the buttons are only spawned if the level is 0, meaning it is just a base.
-        if (!hasUpgraded && !loop.GetComponent<GameLoop>().roundActive)
+        if (!hasUpgraded && !loop.GetComponent<GameLoop>().roundActive && owner == 0)
         {
             GameObject bFactory = (GameObject)Instantiate(buttonFactory);
             bFactory.GetComponent<ButtonFactory>().currentStructure = gameObject;

@@ -7,6 +7,8 @@ public class RecruitmentScript : MonoBehaviour {
     public List<int> recruitmentBacklog;
     public bool backlogIsEmpty;
 
+    public GameObject loop;
+
 	// Use this for initialization
 	void Start () {
         recruitmentBacklog = new List<int>();

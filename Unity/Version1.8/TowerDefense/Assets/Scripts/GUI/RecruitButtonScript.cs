@@ -14,6 +14,8 @@ public class RecruitButtonScript : MonoBehaviour {
 
     private bool ButtonsVisible = false;
 
+    public GameObject recruitmentController;
+
 	// Use this for initialization
 	void Start () {
         viking1 = (GameObject)Resources.Load("RecruitBasicUnit");
@@ -32,7 +34,14 @@ public class RecruitButtonScript : MonoBehaviour {
         if (!ButtonsVisible)
         {
             viking_1 = (GameObject)Instantiate(viking1);
-            viking_2 = (GameObject)Instantiate(viking2);
+            viking_1.GetComponent<RecruitBasicScript>().recruitmentController = recruitmentController;
+
+            if (recruitmentController.GetComponent<RecruitmentScript>().loop.GetComponent<GameLoop>().player1.GetComponent<PlayerScript>().hasBarracks)
+            {
+                viking_2 = (GameObject)Instantiate(viking2);
+                viking_2.GetComponent<RecruitHeavyScript>().recruitmentController = recruitmentController;
+            }
+            
 
             ButtonsVisible = true;
         }
