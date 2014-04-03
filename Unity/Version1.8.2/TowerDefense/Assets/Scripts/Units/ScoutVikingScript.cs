@@ -1,0 +1,39 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class ScoutVikingScript : MonoBehaviour {
+
+	public int Health{ get; set; }
+	public int Curse{ get; set; }
+	public float Speed { get; set; }
+	public float Damage { get; set; }
+	
+	
+	// Use this for initialization
+	void Start () {
+		this.Health = 40;
+		this.Damage = 4.2f;
+		this.Speed = 3; // Is not used at the moment. Speed of unit is set in WayPointScript.
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		// Check curses.
+		
+		// Attack radius.
+
+	}
+
+	public int GetHealth() {
+		return Health;
+	}
+	
+	public float GetSpeed() {
+		return Speed;
+	}
+
+	public void Hurt(float damage) {
+		this.Health -= (int)damage;
+	}
+}
