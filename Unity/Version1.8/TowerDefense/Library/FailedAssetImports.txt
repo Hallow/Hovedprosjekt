@@ -1,1 +1,0 @@
-Assets/Textures/GUI/button_upgrade_tower.png
