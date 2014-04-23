@@ -10,12 +10,25 @@ public class FacebookTestScript : MonoBehaviour {
 
     private string _userId;
     public List<ParseUser> friendsInGame;
+    public GameObject friendInGame;
+    public int friendPictureIndex;
+
+    public Vector3 objectPosition;
+
+    public List<GameObject> friendPictureObjects;
+    public List<Texture2D> friendPictures;
 
 	// Use this for initialization
 	void Start () {
 
+        friendPictureIndex = 0;
+
         //Contains all Users who are Facebook friends with the "Current User"
         friendsInGame = new List<ParseUser>();
+
+        friendPictureObjects = new List<GameObject>();
+
+        friendPictures = new List<Texture2D>();
 
         //This lambda method gets the current users Facebook information.
         Facebook.instance.getMe((error, result) =>
@@ -77,10 +90,14 @@ public class FacebookTestScript : MonoBehaviour {
                         {
                             friendsInGame.Add(user);
                             Debug.Log("Found friend with Facebook Id: " + user["fId"]);
+
+                            LoadFriendPicture((string)user["fId"], friendPictureIndex); // Maby make this as a coroutine.
+                            friendPictureIndex++;
                         }
                     });
             }
         });
+
 	}
 
 
@@ -93,9 +110,36 @@ public class FacebookTestScript : MonoBehaviour {
         //Gets the current User and saves the Facebook ID to the Parse "User" table.
         ParseUser cUser = ParseUser.CurrentUser;
         cUser["fId"] = userId;
+        
         Task saveTask = cUser.SaveAsync();
 
 
+    }
+
+    void LoadFriendPicture(string userFacebookId, int index)
+    {
+        //Uses the userid to fetch the profile image and renders it onto a gameObject
+        Facebook.instance.fetchProfileImageForUserId(userFacebookId, (tex) =>
+        {
+
+            Debug.Log("Loading friend picture..");
+            //Debug.Log(playerName);
+            if (tex != null)
+            {
+                //friendInGame.renderer.material.mainTexture = tex;
+                friendPictures.Add(tex);
+                friendPictureObjects.Add((GameObject)Resources.Load("friend_picture"));
+                friendPictureObjects[index] = (GameObject)Instantiate(friendPictureObjects[index]);
+
+                if (friendPictureObjects.Count > 1)
+                    friendPictureObjects[index].transform.position = new Vector3(-13.19768f, 20.38656f + (7 * -index), 24.11262f);
+                else
+                    friendPictureObjects[index].transform.position = new Vector3(-13.19768f, 20.38656f, 24.11262f);
+
+                friendPictureObjects[index].renderer.material.mainTexture = friendPictures[index];
+                Debug.Log("Friend picture loaded!!!!!!!!!!!");
+            }
+        });
     }
 
     void OnGUI()

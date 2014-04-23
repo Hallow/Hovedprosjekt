@@ -25,7 +25,6 @@ public class AiScript : MonoBehaviour {
         income = 150;
         id = 1;
 
-
         towerFactory = (GameObject)Instantiate(towerFactoryPrefab);
         unitFactory = (GameObject)Instantiate(factoryPrefab);
 
@@ -55,6 +54,7 @@ public class AiScript : MonoBehaviour {
         Vector3 slotCo = towerList[0].GetComponent<TowerScript>().transform.position;
         //slotCo.y += 0.15f;
         //slotCo.z -= 0.2f;
+
         towerList.Add(towerFactory.GetComponent<TowerFactory>().spawnTower(slotCo, towerList[0].GetComponent<TowerScript>().towerType, towerList[0].GetComponent<TowerScript>().towerLevel + 1, towerList[0], false, 1));
         towerList.Add(towerFactory.GetComponent<TowerFactory>().spawnTower(towerList[1].transform.position, towerList[1].GetComponent<TowerScript>().towerType, towerList[1].GetComponent<TowerScript>().towerLevel + 1, towerList[1], false, 1));
 
@@ -69,7 +69,7 @@ public class AiScript : MonoBehaviour {
         yield return new WaitForSeconds(1);
         unitList.Add(unitFactory.GetComponent<UnitFactory>().spawnUnit(0, id, aiStart));
         yield return new WaitForSeconds(1);
-		Debug.Log("hei");
+
         StopCoroutine("round1");
     }
 

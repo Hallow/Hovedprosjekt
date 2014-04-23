@@ -10,22 +10,22 @@ using System.Collections;
 
 public class UnitScript : MonoBehaviour
 {
-
     public int Health { get; set; }		// The health of the unit.
     public float Speed; // The movement speed of the unit.
     public float Damage { get; set; }  // The damage the unit can afflict upon buildings.
     public bool IsAlive; // Keeps track of the unit's life status.
 
-    public float AttackSpeed { get; set; }
+    public float AttackSpeed { get; set; }  // The attack speed of the unit.
 
     public int Type; // Keeps track of the unit's type.
 
     public bool IsSlowed;	// Is true if the unit have been hit by a slowing tower.
     public float slowedTime = 10.0f;	// The time the unit is slowed down.
 
+    public int Path { get; set; }   // The path for the unit to walk.
+
     private float timeSinceLastHit;
     private RadiusScript radius;
-
 
     public int owner;
 
@@ -40,9 +40,8 @@ public class UnitScript : MonoBehaviour
     // Update is called once per frame	
     void Update()
     {
-
         timeSinceLastHit += Time.deltaTime;
-        /* //Removed this section because the radius script for units hasnt been created yet.
+        /* //Removed this section because the radius script for units havent been created yet.
         if (radius.killList.Count > 0 && timeSinceLastHit > 1)
         {
             if (radius.killList[0])
@@ -77,6 +76,11 @@ public class UnitScript : MonoBehaviour
         this.Type = type;
         this.owner = owner;
         this.AttackSpeed = attackSpeed;
+    }
+
+    public void SetPath(int path)
+    {
+        gameObject.GetComponent<Waypoint2Script>().Path = path;
     }
 
     // Sets the speed of the unit.

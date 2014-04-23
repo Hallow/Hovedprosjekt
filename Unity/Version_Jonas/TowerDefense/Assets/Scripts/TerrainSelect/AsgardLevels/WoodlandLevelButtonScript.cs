@@ -5,7 +5,7 @@ public class WoodlandLevelButtonScript : MonoBehaviour {
 
     public int level;
 
-    public Texture2D clickedTexture;
+    //public Texture2D clickedTexture;
 
     // Use this for initialization
     void Start()
@@ -28,15 +28,19 @@ public class WoodlandLevelButtonScript : MonoBehaviour {
         switch (level)
         {
             case 1:
-                Application.LoadLevel("game_scene");
+                Application.LoadLevel("tutorial_inwork");
                 break;
             case 2:
+                Application.LoadLevel("game_scene");
                 break;
             case 3:
+                Application.LoadLevel("stage1_inwork");
                 break;
             case 4:
+                Application.LoadLevel("stage3_inwork");
                 break;
             case 5:
+                Application.LoadLevel("stage2_inwork");
                 break;
             case 6:
                 break;

@@ -20,8 +20,13 @@ public class RecruitBasicScript : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Debug.Log("MOUSE DOWN!");
         //index++;
-        recruitmentController.GetComponent<RecruitmentScript>().recruitmentBacklog.Add(0);
+
+        if (Input.GetMouseButton(0))
+            recruitmentController.GetComponent<RecruitmentScript>().recruitmentBacklog.Add(0);
+
+        Camera.main.GetComponent<UnitListScrollScript>().UpdateList();
+
+        Debug.Log("Adding basic viking___!!");
     }
 }

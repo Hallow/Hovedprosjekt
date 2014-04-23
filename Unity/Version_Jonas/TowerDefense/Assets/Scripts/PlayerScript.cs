@@ -78,8 +78,6 @@ public class PlayerScript : MonoBehaviour
     //appropriate unit by adding it to the unitlist, and then waits 1 second. When all units are spawned, the coroutine stops.
     public IEnumerator spawnUnits()
     {
-
-
         foreach (int i in recruitmentController.GetComponent<RecruitmentScript>().recruitmentBacklog)
         {
             switch (i)

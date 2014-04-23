@@ -52,13 +52,11 @@ public class MultiplayerButtonScript : MonoBehaviour {
 
 
 
-            /*
             if (FacebookCombo.isSessionValid())
             {
                 Debug.Log("LOGGED IN SUCCESSFULLY!!!!!!!!!!!!!!!");
                 Application.LoadLevel("multiplayer_scene");
             }
-            */
 
 
         }

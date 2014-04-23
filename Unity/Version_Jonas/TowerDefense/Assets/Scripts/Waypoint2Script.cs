@@ -10,11 +10,15 @@ public class Waypoint2Script : MonoBehaviour {
     //Derived from Unit Factory, which again derives it from the turn script
     public GameObject turnController;
 
-    public List<GameObject> waypointList;
+    public List<GameObject> waypointList1;
+    public List<GameObject> waypointList2;
+    public List<GameObject> waypointList3;
     public GameObject waypointContainer;
 
     // This is the speed of the unit. Is set from the unit's script.
     public float UnitSpeed;
+
+    public int Path { get; set; }
 
 	public int posCounter;
 	public Vector3 currentPos;
@@ -40,6 +44,11 @@ public class Waypoint2Script : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+
+        if (Path == 0)
+        {
+            Path = 1;
+        }
 		
 		//unit = gameObject.GetComponent<UnitScript> ();
 		
@@ -49,14 +58,16 @@ public class Waypoint2Script : MonoBehaviour {
 		
 		journeyLength = Vector3.Distance (currentPos, nextPos);
 
-        waypointList = extractWaypoints(waypointContainer);
+        waypointList1 = extractWaypoints(waypointContainer);
+        waypointList2 = waypointList1;
+        waypointList3 = waypointList1;
 
-        currentPos = waypointList[posCounter].transform.position;
-        nextPos = waypointList[posCounter + 1].transform.position;
+        currentPos = waypointList1[posCounter].transform.position;
+        nextPos = waypointList1[posCounter + 1].transform.position;
 
         if(gameObject.GetComponent<UnitScript>().owner == 1)
         {
-            waypointList.Reverse();
+            waypointList1.Reverse();
         }
 	}
 	
@@ -88,6 +99,7 @@ public class Waypoint2Script : MonoBehaviour {
 	
 	IEnumerator unitMovement()
 	{
+        // TODO: Walk the path according to the Path variable.
 
         if (type == 3)
         {	// Since the jumper moves different than the other units. It needs its own case.
@@ -112,13 +124,37 @@ public class Waypoint2Script : MonoBehaviour {
             {
                 posCounter++;
                 lastPosTime = 0;
-                currentPos = waypointList[posCounter].transform.position;
-                nextPos = waypointList[posCounter + 1].transform.position;
-                journeyLength = Vector3.Distance(currentPos, nextPos);
-            }
 
+                if (gameObject.GetComponent<UnitScript>().owner == 1)
+                {
+                    currentPos = waypointList1[posCounter].transform.position;
+                    nextPos = waypointList1[posCounter + 1].transform.position;
+                    journeyLength = Vector3.Distance(currentPos, nextPos);
+                }
+                else
+                {
+                    switch (Path)
+                    {
+                        case 1:
+                            currentPos = waypointList1[posCounter].transform.position;
+                            nextPos = waypointList1[posCounter + 1].transform.position;
+                            journeyLength = Vector3.Distance(currentPos, nextPos);
+                            break;
+                        case 2:
+                            currentPos = waypointList2[posCounter].transform.position;
+                            nextPos = waypointList2[posCounter + 1].transform.position;
+                            journeyLength = Vector3.Distance(currentPos, nextPos);
+                            break;
+                        case 3:
+                            currentPos = waypointList3[posCounter].transform.position;
+                            nextPos = waypointList3[posCounter + 1].transform.position;
+                            journeyLength = Vector3.Distance(currentPos, nextPos);
+                            break;
+                    }
+                }
+            }
         }
-        else
+        else // Other units.
         {
             lastPosTime += Time.deltaTime;
             float distanceCovered = lastPosTime * speed;
@@ -129,9 +165,18 @@ public class Waypoint2Script : MonoBehaviour {
             {
                 posCounter++;
                 lastPosTime = 0;
-                currentPos = waypointList[posCounter].transform.position;
-                nextPos = waypointList[posCounter + 1].transform.position;
-                journeyLength = Vector3.Distance(currentPos, nextPos);
+
+                switch (Path) {
+                    case 1:
+                        currentPos = waypointList1[posCounter].transform.position;
+                        nextPos = waypointList1[posCounter + 1].transform.position;
+                        journeyLength = Vector3.Distance(currentPos, nextPos);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                }
             }
         }
 

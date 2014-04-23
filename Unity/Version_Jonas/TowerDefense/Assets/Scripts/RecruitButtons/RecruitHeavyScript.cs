@@ -21,6 +21,9 @@ public class RecruitHeavyScript : MonoBehaviour {
     void OnMouseDown()
     {
         //index++;
-        recruitmentController.GetComponent<RecruitmentScript>().recruitmentBacklog.Add(2);
+        if (Input.GetMouseButton(0))
+            recruitmentController.GetComponent<RecruitmentScript>().recruitmentBacklog.Add(2);
+
+        Debug.Log("adding heavy viking....!");
     }
 }

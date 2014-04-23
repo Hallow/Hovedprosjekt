@@ -18,7 +18,7 @@ public class OptionsButtonScript : MonoBehaviour {
     void OnMouseDown()
     {
         Click();
-        Application.LoadLevel("nogo_scene");
+        Application.LoadLevel("options_scene");
     }
 
     public void Click()
