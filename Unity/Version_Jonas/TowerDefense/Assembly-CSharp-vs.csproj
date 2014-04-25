@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scripts\BuildingScript.cs" />
      <Compile Include="Assets\Scripts\ButtonFactory.cs" />
      <Compile Include="Assets\Scripts\ButtonScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\ArrowDownButtonScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\ArrowUpButtonScript.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\ArrowDownButtonScript.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\ArrowUpButtonScript.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\CornerButtonScript.cs" />
@@ -58,6 +60,11 @@
      <Compile Include="Assets\Scripts\GUI\Buttons\PauseMenuQuitScript.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\PauseMenuResumeScript.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\RecruitButtonScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\CornerButtonScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\PauseButtonScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\PauseMenuQuitScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\PauseMenuResumeScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\RecruitButtonScript.cs" />
      <Compile Include="Assets\Scripts\GUI\SelectPath1Script.cs" />
      <Compile Include="Assets\Scripts\GUI\SelectPath2Script.cs" />
      <Compile Include="Assets\Scripts\GUI\SelectPath3Script.cs" />
@@ -119,6 +126,7 @@
      <Compile Include="Assets\Scripts\Waypoint2Script.cs" />
      <Compile Include="Assets\ScriptsOLD\DynamicSlotScript.cs" />
      <Compile Include="Assets\ScriptsOLD\SlotMenu.cs" />
+     <Compile Include="Assets\TestScript.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
