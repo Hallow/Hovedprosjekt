@@ -1,0 +1,49 @@
+units:
+
+basic: 
+	100 hp
+	base 1 speed
+
+scout: 
+	75 hp
+	1.25 speed
+heavy: 
+	150 hp
+	0.8 speed
+
+jumper: 
+	75 hp
+	unik, stille stående så kraftig rykk
+
+ex:
+spy: 
+	75 hp
+	1 speed, ikke synlig før mot slutten.
+
+tårn:
+
+basic
+nivå 1
+	50 dmg
+	fire rate: base 1  (1.5 skudd per passering av en basic unit)
+nivå 2
+	50 dmg
+	fire rate 1.5 (2 skudd per passering av en basic unit)
+
+aoe
+nivå 1
+	75 dmg
+	25 dmg på splash
+	fire rate 0.8
+nivå 2
+	85 dmg 
+	30 dmg på splash
+	fire rate 0.8
+
+slow
+nivå 1
+	dmg 25
+	fire rate 0.8
+nivå 2
+	dmg 25
+	fire rate 0.9
