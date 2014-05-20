@@ -65,21 +65,22 @@ public class PlayerScript : MonoBehaviour
 
         //Checks if the Player is an AI, somewhat redundant, can be trimmed but requires changes to other classes.
 
-        if (isAi)
+        if (!mp)
         {
-            id = 1;
-            towerFactory = (GameObject)Instantiate(towerFactoryPrefab);
+            if (isAi)
+            {
+                id = 1;
+                towerFactory = (GameObject)Instantiate(towerFactoryPrefab);
+            }
+            else
+            {
+                id = 0;
+            }
         }
-        else
-        {
-            id = 0;
-        }
-
 
         //UnitList contains the units that are currently active on the board.
         unitList = new List<GameObject>();
         unitFactory = (GameObject)Instantiate(factoryPrefab);
-
     }
 
     // Update is called once per frame
@@ -101,8 +102,6 @@ public class PlayerScript : MonoBehaviour
     //appropriate unit by adding it to the unitlist, and then waits 1 second. When all units are spawned, the coroutine stops.
     public IEnumerator spawnUnits()
     {
-
-
         foreach (int i in recruitmentController.GetComponent<RecruitmentScript>().recruitmentBacklog)
         {
             switch (i)
